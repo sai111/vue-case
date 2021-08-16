@@ -1,0 +1,51 @@
+.count-wrap {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  .count-title {
+    line-height: 50px;
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: center
+  }
+  table {
+    width: 940px;
+    margin: 0 auto;
+    .f20 {
+      font-size: 20px;
+      color: red;
+    }
+    .bookmark {
+      line-height: 30px;
+      padding: 10px 5px;
+    }
+    .label {
+      padding: 10px 5px;
+    }
+    .list-wrap {
+      padding: 16px;
+      .list-li {
+        line-height: 30px;
+        &:first-child {
+          .list-li-count {
+            font-size: 25px;
+          }
+        }
+        .list-li-count {
+          color: red;
+          font-weight: bold;
+        }
+      }
+    }
+    .button-wrap {
+      padding: 16px;
+    }
+    .num {
+      color: red;
+    }
+    .shoucang {
+      color: #0E5EE2;
+      text-decoration: underline;
+    }
+  }
+}

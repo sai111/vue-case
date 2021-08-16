@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>doughnut</title>
+  <style>
+    .doughnut-svg {
+      display: block;
+      margin: 0 auto;
+      transform: rotate(-90deg);
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h3 style="text-align: center;">svg--环形图</h3>
+    <svg :width="svgData.width" :height="svgData.height" :viewBox="`0 0 ${svgData.width} ${svgData.height}`"
+      class="doughnut-svg" xmlns="http://www.w3.org/2000/svg">
+      <path v-if="renderList && renderList.length > 0" v-for="(cur, index) in renderList" :key="index"
+        :d="cur | getPath(arcData)" :stroke="colorMap[index]" :stroke-width="arcData.stockWidth" fill="none" />
+    </svg>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script src="./doughnut.js"></script>
+</body>
+
+</html>
+
+<!--作者：代码只写一行半
+链接：https://juejin.cn/post/6844903861916794887
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。-->

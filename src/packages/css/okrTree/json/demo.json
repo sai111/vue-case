@@ -1,0 +1,38 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "label": "xxx科技有有限公司--1",
+      "expand": true,
+      "children": [
+        {
+          "label": "产品研发部--12",
+          "id": 12,
+          "expand": true
+        },
+        {
+          "id": 22,
+          "expand": false,
+          "label": "销售部--22",
+          "children": [
+            {
+              "id": 231,
+              "expand": false,
+              "label": "销售一部--231"
+            },
+            {
+              "id": 232,
+              "expand": false,
+              "label": "销售二部--232"
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "expand": true,
+          "label": "财务部--32"
+        }
+      ]
+    }
+  ]
+}

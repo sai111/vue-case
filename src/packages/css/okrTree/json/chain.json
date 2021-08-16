@@ -1,0 +1,103 @@
+{
+  "code": 200,
+  "message": null,
+  "data": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "id": "40",
+            "parentId": 78,
+            "value": "测试111",
+            "title": "测试111",
+            "webType": "website_code",
+            "edit": false,
+            "expand": false,
+            "sum": 1,
+            "direction": null
+          },
+          {
+            "children": [],
+            "id": "335",
+            "parentId": 223,
+            "value": "http",
+            "title": "手机视频观",
+            "webType": "website_code",
+            "edit": false,
+            "expand": false,
+            "sum": 1,
+            "direction": null
+          },
+          {
+            "children": [],
+            "id": "55",
+            "parentId": 55,
+            "value": "http",
+            "title": "视频观",
+            "webType": "website_code",
+            "edit": false,
+            "expand": false,
+            "sum": 1,
+            "direction": null
+          }
+        ],
+        "id": "66",
+        "parentId": 0,
+        "value": null,
+        "title": "四方支付平台",
+        "webType": "payment_platform",
+        "expand": false,
+        "edit": true,
+        "sum": 3,
+        "direction": "left"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "id": "14",
+                "parentId": 14,
+                "value": "htt",
+                "title": "66视频观",
+                "webType": "website_code",
+                "edit": false,
+                "expand": false,
+                "sum": 1,
+                "direction": null
+              }
+            ],
+            "id": "12",
+            "parentId": 12,
+            "value": "http",
+            "title": "55视频观",
+            "webType": "website_code",
+            "edit": false,
+            "expand": false,
+            "sum": 1,
+            "direction": null
+          }
+        ],
+        "id": "15",
+        "parentId": 0,
+        "value": null,
+        "title": "广告投放",
+        "webType": "advertising",
+        "edit": true,
+        "expand": false,
+        "sum": 1,
+        "direction": "left"
+      }
+    ],
+    "id": "20",
+    "parentId": null,
+    "value": "测试111999",
+    "title": "测试111999",
+    "webType": "gambling",
+    "expand": true,
+    "edit": true,
+    "sum": null,
+    "direction": null
+  }
+}

@@ -1,0 +1,507 @@
+<script type="text/javascript">
+  // <![CDATA[
+  function bookmark() {
+    if (document.all) {
+      try {
+        window.external.addFavorite(window.location.href, document.title);
+      } catch (e) {
+        alert("您的浏览器不支持自动加入收藏，请使用Ctrl+D进行添加");
+      }
+
+    } else if (window.sidebar) {
+      window.sidebar.addPanel(document.title, window.location.href, "");
+    } else {
+      alert("您的浏览器不支持自动加入收藏，请使用Ctrl+D进行添加");
+    }
+  }
+  // ]]>
+
+</script>
+
+
+<style type="text/css">
+  <!--
+  body {
+    margin: 0;
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif
+  }
+
+  td {
+    font-size: 9pt;
+    line-height: 19px;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    margin: 30px auto 20px
+  }
+
+  .content {
+    font-size: 14px;
+  }
+
+    {
+    font-size: 9pt;
+    color: #0E5EE2;
+    text-decoration: underline;
+  }
+
+  a.bookmark:visited,
+  a.bookmark:link,
+  a.bookmark:active {
+    font-size: 9pt;
+    color: #0E5EE2;
+    text-decoration: underline;
+  }
+
+  a.bookmark:hover {
+    text-decoration: none;
+  }
+
+  a:visited,
+  a:link,
+  a:active {
+    font-size: 9pt;
+    color: #333;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #0E5EE2;
+    text-decoration: underline;
+  }
+
+  .white {
+    color: #fff;
+  }
+
+  a.d:hover {
+    font-size: 13px;
+    color: #CFF1FA;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+
+  a.d:link {
+    font-size: 13px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  a.d:visited {
+    font-size: 13px;
+    color: #CFF1FA;
+    font-weight: 700;
+  }
+
+  a.c:link {
+    color: #666;
+    text-decoration: underline;
+  }
+
+  a.c:visited {
+    color: #666;
+    text-decoration: none;
+  }
+
+  a.c:hover {
+    font-weight: 700;
+    color: #666;
+    text-decoration: underline;
+  }
+
+  a.b:hover {
+    font-size: 10pt;
+    color: #36F;
+    text-decoration: none;
+  }
+
+  a.e:hover {
+    font-size: 12px;
+    color: #CFF1FA;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+
+  a.e:link {
+    font-size: 12px;
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  a.e:visited {
+    font-size: 12px;
+    color: #CFF1FA;
+    font-weight: 700;
+  }
+
+  .hongzi {
+    color: red;
+  }
+
+  a.f:hover {
+    font-size: 13px;
+    border: solid 1px #69F;
+    background-color: #FBFDFF;
+    height: 18px;
+    width: 26px;
+    font-weight: 700;
+    color: #00F;
+  }
+
+  .pageNumlink {
+    font-size: 13px;
+    border: solid 1px #69F;
+    background-color: #39F;
+    height: 18px;
+    width: 26px;
+    color: #FFF;
+    font-weight: 700;
+  }
+
+  TEXTAREA,
+  SELECT {
+    font-size: 9pt;
+    color: #000;
+    font-family: Verdana, Arial, Helvetica, sans-serif, 宋体;
+    background-color: #fff;
+    border-color: silver;
+    border-width: 1px;
+  }
+
+  a.b:link,
+  a.b:visited {
+    font-size: 10pt;
+    color: #0321C9;
+    text-decoration: underline;
+  }
+
+  a.f:link,
+  a.f:visited {
+    font-size: 13px;
+    border: solid 1px #69F;
+    background-color: #FBFDFF;
+    height: 18px;
+    width: 26px;
+    color: #00F;
+  }
+
+  .num {
+    font-size: 14px;
+    font-weight: 700;
+    color: #F00
+  }
+
+  .f20 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #F00
+  }
+
+  -->
+</style>
+
+
+<script type="text/javascript">
+  //<![CDATA[
+  var BROWSER = {};
+  __GetBVar();
+  if (BROWSER.safari) {
+    BROWSER.firefox = true;
+  }
+
+  function __GetBVar() {
+    var types = {
+      'ie': 'msie',
+      'firefox': '',
+      'chrome': '',
+      'opera': '',
+      'safari': '',
+      'mozilla': '',
+      'webkit': '',
+      'maxthon': '',
+      'qq': 'qqbrowser'
+    };
+    var __ua = navigator.userAgent.toLowerCase();
+    var other = 1,
+      ver = 0;
+    if (BROWSER.opera) {
+      ver = opera.version();
+      BROWSER.opera = ver;
+      BROWSER.name = "opera";
+      BROWSER.ver = parseFloat(ver);
+    } else {
+      BROWSER.opera = 0;
+    }
+    for (i in types) {
+      var v = types[i] ? types[i] : i;
+      if (__ua.indexOf(v) != -1) {
+        var re = new RegExp(v + '(\\/|\\s)([\\d\\.]+)', 'ig');
+        var matches = re.exec(__ua);
+        ver = matches != null ? matches[2] : 0;
+        other = ver !== 0 && v != 'mozilla' ? 0 : other;
+        if (!BROWSER.name) {
+          BROWSER.name = i;
+          BROWSER.ver = parseFloat(ver);
+        }
+      } else {
+        ver = 0;
+      }
+      eval('BROWSER.' + i + '= ver');
+    }
+    BROWSER.other = other;
+  }
+
+  function $(name) {
+    return document.getElementById(name);
+  }
+
+  function $set(name, val) {
+    document.getElementById(name).innerHTML = val;
+  }
+
+  function Statistics() {
+    var str = $('content').value.replace(/\r\n/g, "\n");
+    var t_str = str.replace(/\n/g, '');
+    var w_c_str = str.match(/[\u4e00-\u9fa5]/g) || [];
+    var w_e_str = str.match(/\b\w+\b/g) || [];
+    var w_n_str = str.match(/\b\d+\b/g) || [];
+    var e_p = t_str.match(
+      /[|\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g) || [];
+
+    var sTotal = 0;
+    for (var i = 0; i < t_str.length; i++) {
+      var c = t_str.charAt(i);
+      if (c.match(/[^\x00-\xff]/)) sTotal++;
+    }
+
+    var e = t_str.match(/[A-Za-z]/g) || [];
+    var eTotal = e.length;
+
+    var n = t_str.match(/[0-9]/g) || [];
+    var nTotal = n.length;
+
+    var part = 0;
+    var s_ma = str.split("\n");
+    for (var i = 0; i < s_ma.length; i++) {
+      if (s_ma[i].length > 0) part++;
+    }
+
+    $set('numwords', t_str.length);
+    $set('zhongwen', w_c_str.length);
+    $set('zbiaodian', sTotal - w_c_str.length);
+    $set('yingwen', eTotal);
+    $set('ybiaodian', e_p.length);
+    $set('danci', w_e_str.length - w_n_str.length);
+    $set('shuju', w_n_str.length);
+    $set('shuzi', nTotal);
+    $set('hangduan', part);
+    $set('zishu', w_c_str.length + w_e_str.length + sTotal - w_c_str.length);
+
+    $set('zhongwen2', w_c_str.length);
+    $set('danci2', w_e_str.length - w_n_str.length);
+    $set('shuju2', w_n_str.length);
+    $set('zbiaodian2', sTotal - w_c_str.length);
+    $set('zishu2', w_c_str.length + w_e_str.length + sTotal - w_c_str.length);
+
+
+
+  }
+
+  function Clear_Content() {
+    $('content').value = "";
+
+    Statistics();
+  }
+
+  function R_Trim() {
+    var str = $('content').value.replace(/\r\n/g, "\n").replace(/\n/g, "~");
+    var m = str.split("~");
+    var ma = [];
+    var len = m.length;
+    for (var i = 0; i < len; i++) {
+      ma.push(m[i].replace(/(\s*$)/g, ""));
+    }
+    $('content').value = ma.join("\r\n");
+
+    Statistics();
+  }
+
+  function Section() {
+    var str = $('content').value.replace(/\r\n/g, "\n").replace(/\n/g, "~");
+    var m = str.split("~");
+    var ma = [];
+    var len = m.length;
+    for (var i = 0; i < len; i++) {
+      ma.push('    ' + m[i].replace(/(^\s*)|(\s*$)/g, ""));
+    }
+    $('content').value = ma.join("\r\n");
+
+    Statistics();
+  }
+  //]]>
+
+</script>
+
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?7a3288d86498e9a7c7650edbb4d37056";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+
+</script>
+
+
+
+
+
+
+</head>
+
+<body>
+  <iframe frameborder="0" style="display: none;"></iframe>
+
+  <div id="bdshare_s" style="display: block;"></div>
+
+
+
+
+
+
+
+  <h1> <a href="/" target="_blank"><img width="30" height="30" style="margin-bottom:-7px;" src="./ji.png"
+        alt="在线字数统计工具"></a>字数统计——在线字数自动统计计算、文档编辑工具</h1>
+  <table cellspacing="1" cellpadding="5" width="940" align="center" bgcolor="#ffffff" border="0">
+
+    <tbody>
+      <tr>
+        <td bgcolor="#e5f0fb" colspan="2"><span
+            style="float:left; line-height:30px">这是一个自动统计字数的小工具，将文档拷贝过来即可进行自动统计，可算出总字数，并可分别算出汉字字数（含标点）、英文字数和数字字数。（<a
+              href="javascript:bookmark()" class="bookmark">点此收藏</a>）</span>
+
+
+
+
+
+      </tr>
+      <tr>
+        <td bgcolor="#e5f0fb"><label>文章输入区</label></td>
+        <td bgcolor="#e5f0fb">
+
+
+          <textarea id="content" name="content" rows="20" cols="127"></textarea>
+
+          <script type="text/javascript">
+            if (BROWSER.ie) $('content').onpropertychange = Statistics;
+            else $('content').oninput = Statistics;
+
+          </script>
+
+        </td>
+
+
+
+
+
+      </tr>
+      <tr>
+        <td bgcolor="#e5f0fb">文字总数</td>
+
+        <td bgcolor="#e5f0fb"><b>总字数为：</b><span id="zishu" class="f20">０</span><b>个。</b>&nbsp;
+
+          （中文字数+英文单词+数据单词+中文标点符号：
+          <span id="zhongwen2" class="num">０</span>+
+          <span id="danci2" class="num">０</span>+
+          <span id="shuju2" class="num">０</span>+
+          <span id="zbiaodian2" class="num">０</span>=<span id="zishu2" class="num">０</span>
+
+
+
+
+
+          ）
+          </br></br><b>小说、作文等行业正规字数计算方法：</b>中文字数+英文单词+数据单词+中文标点符号，英文标点符号不计入字数，此外空格肯定不会被计入字数。
+        </td>
+
+
+
+      </tr>
+      <tr>
+        <td bgcolor="#e5f0fb">详细统计</td>
+        <td style="LINE-HEIGHT: 200%" bgcolor="#e5f0fb">
+          字符总数：<span id="numwords" class="num">０</span> 个字符 (汉字算两个字符，数字、空格、英文字母算做一个字符)<br><br>
+
+          中文字符总数：<span id="zhongwen" class="num">０</span> 个汉字<br>
+          中文标点总数：<span id="zbiaodian" class="num">０</span> 个<br>
+          英文字符总数：<span id="yingwen" class="num">０</span> 个 （不含英文状态下的数字）<br>
+          英文单词总数：<span id="danci" class="num">０</span> 个 <br>
+          英文标点总数：<span id="ybiaodian" class="num">０</span> 个 <br>
+          数字总数：<span id="shuzi" class="num">０</span> 个<br>
+          数据单词总数：<span id="shuju" class="num">０</span> 个<br>
+          行（段）总数：<span id="hangduan" class="num">０</span> 个<br>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td bgcolor="#e5f0fb">操作</td>
+        <td style="LINE-HEIGHT: 200%" bgcolor="#e5f0fb">
+
+
+
+
+
+          <input onclick="Clear_Content()" type="button" value="清空数据" title="清空数据" style="margin :0px 0px 0px 150px;">
+
+
+          <input onclick="R_Trim()" type="button" value="清除行尾空格" title="清除行尾空格" style="margin :0px 0px 0px 150px;">
+
+
+
+          <input onclick="Section()" type="button" value="段前空两格" title="段落整理（段前加空格）" style="margin :0px 0px 0px 150px;">
+
+
+
+
+        </td>
+      </tr>
+
+
+
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+  <p style="text-align:center;font-size:9pt;clear:both;" class="foot"><br>
+    <strong style="color:#060; font-size:9pt; font-weight:700">非常简洁、方便、好用的，在线字数统计和文档编辑工具，绿色安全，建议收藏以备用！</strong><br>
+
+
+  </p>
+
+
+
+  <div style="margin:20px auto;text-align:center;clear:both;"></div>
+
+  <div style="display:none">
+
+  </div>
+
+
+
+
+</body>
+
+</html>
