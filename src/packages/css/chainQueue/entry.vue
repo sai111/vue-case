@@ -5,10 +5,10 @@
   </div>
 </template>
 <script>
-import chainQueus from './index.vue'
+import ChainQueus from './index.vue'
 export default {
-  name: 'chainQueusEntry',
-  components: { chainQueus },
+  name: 'ChainQueusEntry',
+  components: { ChainQueus },
   data() {
     return {}
   },

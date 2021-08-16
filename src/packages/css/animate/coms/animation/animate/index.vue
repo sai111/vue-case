@@ -59,7 +59,7 @@ export default {
       this.classN = item.label
     },
     formatStyle() {
-      let result = {}
+      const result = {}
       result.animation = `${this.classN} 1s 1 both`
       setTimeout(() => {
         result.animation = 'none 0 ease 0 1 normal'

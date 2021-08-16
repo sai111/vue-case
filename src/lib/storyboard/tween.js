@@ -147,7 +147,8 @@ export class Tween {
     this.frameMove = 1
   }
   wait(time) {
-    return this._pauseTime = time
+    // this._pauseTime = time
+    return true
   }
   lerp(total) {
     const lerps = {}

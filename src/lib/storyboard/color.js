@@ -153,13 +153,13 @@ export default class GLColor {
   }
   getHSL() {
     if (!this._h) {
-      let r = this._r / 255
-      let g = this._g / 255
-      let b = this._b / 255
-      let min = Math.min(r, Math.min(g, b))
-      let max = Math.max(r, Math.max(g, b))
-      let diff = max - min
-      let l = (max + min) / 2
+      const r = this._r / 255
+      const g = this._g / 255
+      const b = this._b / 255
+      const min = Math.min(r, Math.min(g, b))
+      const max = Math.max(r, Math.max(g, b))
+      const diff = max - min
+      const l = (max + min) / 2
       let h
       let s
       if (diff === 0) {
@@ -171,9 +171,9 @@ export default class GLColor {
         } else {
           s = diff / (2 - max - min)
         }
-        let diffR = ((max - r) / 6 + diff / 2) / diff
-        let diffG = ((max - g) / 6 + diff / 2) / diff
-        let diffB = ((max - b) / 6 + diff / 2) / diff
+        const diffR = ((max - r) / 6 + diff / 2) / diff
+        const diffG = ((max - g) / 6 + diff / 2) / diff
+        const diffB = ((max - b) / 6 + diff / 2) / diff
         if (r === max) {
           h = diffB - diffG
         } else if (g === max) {
@@ -216,8 +216,8 @@ export default class GLColor {
   }
 
   // familyColor：颜色族群，即获取一个hue值的不同亮度，饱和度，的同族颜色
-  getFamilyColor(s, l){
-    let familyColor = new GLColor()
+  getFamilyColor(s, l) {
+    const familyColor = new GLColor()
     familyColor._h = this._h
     if (!this.flag) familyColor._s = s
     else familyColor._s = 0
@@ -226,7 +226,7 @@ export default class GLColor {
     return familyColor
   }
 }
-let lerpColor = new GLColor()
+const lerpColor = new GLColor()
 GLColor.lerp = function(GLColor1, GLColor2, t) {
   t = clamp(t, 0, 1)
   lerpColor.set({
@@ -242,8 +242,8 @@ function clamp(value) {
   return Math.min(Math.max(0, value), 1)
 }
 
-let addHSLColor = new GLColor()
-GLColor.addHSL = function (color, hslChange) {
+const addHSLColor = new GLColor()
+GLColor.addHSL = function(color, hslChange) {
   addHSLColor.set(color)
   addHSLColor.getHSL()
   addHSLColor._h = clamp(addHSLColor._h + hslChange.h)

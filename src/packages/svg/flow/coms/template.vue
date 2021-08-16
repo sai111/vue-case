@@ -1,11 +1,13 @@
 <template>
   <div>
-    demo
+    <svg>
+      
+    </svg>
   </div>
 </template>
 <script>
 export default {
-  name: '',
+  name: 'Dragram',
   components: {},
   props: {},
   data() {

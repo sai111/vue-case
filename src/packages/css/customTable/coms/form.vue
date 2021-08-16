@@ -13,7 +13,7 @@
     </div>
     <div class="receiver-form-body scrollbar-components">
       <el-scrollbar style="width: 100%; height: 100%">
-        <el-form :model="form" ref="form" class="custom-form">
+        <el-form ref="form" :model="form" class="custom-form">
           <div
             v-for="(item, index) in form.list"
             :key="'item-li-' + index"
@@ -70,7 +70,7 @@ export default {
       },
       rules: {
         companyName: [
-          { required: true, message: '请输入企业名称'}
+          { required: true, message: '请输入企业名称' }
         ],
         telNo: [
           { required: true, message: '请输入您的手机号码' },

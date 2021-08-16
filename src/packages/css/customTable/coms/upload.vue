@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+import XLSX from 'xlsx'
 import UploadSection from '@/coms/upload.vue'
 import CommonTable from '@/coms/common-table.vue'
 export default {
@@ -42,7 +43,6 @@ export default {
   methods: {
     handleSuccess(res, file, fileList) {
       var fileReader = new FileReader()
-      var XLSX = require('../js/xlsx.js')
       fileReader.onload = (e) => {
         try {
           const data = e.target.result

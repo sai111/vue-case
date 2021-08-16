@@ -1,7 +1,7 @@
 import Color from './color'
 
 export default class VisualMap {
-  constructor({ visualMap}) {
+  constructor({ visualMap }) {
     this.createMap(visualMap)
   }
   createMap(visualMap) {
@@ -30,7 +30,7 @@ export default class VisualMap {
     const color3 = this.map[i - 1].color
     const color4 = this.map[i].color
     const t2 = (value - this.map[i - 1].value) / (this.map[i].value - this.map[i - 1].value)
-    return  (Color.lerp(color3, color4, t2)).get16String()
+    return (Color.lerp(color3, color4, t2)).get16String()
   }
   initArr() {
     this.map = []

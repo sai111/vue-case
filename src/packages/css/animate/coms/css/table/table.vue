@@ -3,7 +3,7 @@
     <el-table :data="tableData">
       <template v-for="(item, index) in columns">
         <el-table-column
-          v-if="item.slot" 
+          v-if="item.slot"
           :key="'type-'+index"
           :prop="item.prop"
           :type="item.type"
@@ -12,11 +12,11 @@
           :align="item.align"
           :show-overflow-tooltip="item.showOverflowTooltip"
         >
-        <template slot-scope="scope">
-          <div>
-            {{ scope.row[item.prop] }}
-          </div>
-        </template>
+          <template slot-scope="scope">
+            <div>
+              {{ scope.row[item.prop] }}
+            </div>
+          </template>
         </el-table-column>
         <el-table-column
           v-else

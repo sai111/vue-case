@@ -97,10 +97,10 @@ export default {
   },
   // 事件---start
   // 覆盖默认的上传行为，可以自定义上传的实现
-  //httpRequest: {
+  // httpRequest: {
   //  type: Function,
   //  default: ajax
-  //},
+  // },
   // 上传文件之前的钩子，参数为上传的文件=>function(file)
   // beforeUpload: {
   //  type: Function,

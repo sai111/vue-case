@@ -9,8 +9,6 @@ const DEFAULT_SETTINGS = {
 export default class Fireworks {
   canvas = null
   ctx = null
-
-
   // 绘制参数
   settings = DEFAULT_SETTINGS
   // refresh 逻辑控制阀
@@ -22,9 +20,8 @@ export default class Fireworks {
   stats = null
   percent = 0
 
-  constructor({ canvas, settings = {} }) {
+  constructor({ canvas, settings = {}}) {
     this.canvas = canvas
-    console.log(this.percent, 'percent----7777')
     Object.assign(this.settings, settings)
     this.init()
   }
@@ -73,25 +70,19 @@ export default class Fireworks {
 
   // 生成随机颜色
   getRandomColor(count) {
-    let colors = []
-    for ( let i = 0; i < count; i++ )  {
-      colors.push(
-        `rgb(${( Math.random() * 255 >> 0 )},
-        ${( Math.random() * 255 >> 0 )},
-        ${( Math.random() * 255 >> 0 )})`
-      )
+    const colors = []
+    for (let i = 0; i < count; i++) {
+      colors.push(`rgb(${(Math.random() * 255 >> 0)},${(Math.random() * 255 >> 0)},${(Math.random() * 255 >> 0)})`)
     }
     return colors
   }
   // 这个方程就是二次贝赛尔曲线方
-  twoBezizer (p0, p1, p2, t) {
+  twoBezizer(p0, p1, p2, t) {
     const k = 1 - t
     return k * k * p0 + 2 * (1 - t) * t * p1 + t * t * p2
   }
 
-  oneBezizer(p0,p1,t) {
-    return p0 + (p1-p0) * t
-  }
+  oneBezizer(p0, p1, t) { return p0 + (p1 - p0) * t }
 
   drawWithDiscrete2(ctx, start, control, end, percent) {
     const t = percent / 100
@@ -102,16 +93,12 @@ export default class Fireworks {
     A[1] = oneBezizer(start[1], control[1], t)
     C[0] = twoBezizer(start[0], control[0], end[0], t)
     C[1] = twoBezizer(start[1], control[1], end[1], t)
-    ctx.quadraticCurveTo( 
-      A[ 0 ], A [ 1 ],
-      C[ 0 ], C[ 1 ]
-    )
+    ctx.quadraticCurveTo(A[0], A[1], C[0], C[1])
   }
-
   // 离散化
   drawWithDiscrete(ctx, start, control, end, percent) {
     ctx.moveTo(start[0], start[1])
-    for ( let t = 0; t <= percent / 100; t += 0.01 ) {
+    for (let t = 0; t <= percent / 100; t += 0.01) {
       const x = twoBezizer(start[0], control[0], end[0], t)
       const y = twoBezizer(start[1], control[1], end[1], t)
       ctx.lineTo(x, y)

@@ -1,9 +1,11 @@
 <template>
-  <div class="chainQueus"></div>
+  <div class="chainQueus">
+    12
+  </div>
 </template>
 <script>
 export default {
-  name: 'chainQueus',
+  name: 'ChainQueus',
   props: {},
   data() {
     return {}

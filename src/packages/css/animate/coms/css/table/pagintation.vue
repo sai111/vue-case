@@ -30,7 +30,9 @@ export default {
     },
     pageSizeTick: {
       type: Array,
-      default: [5, 10, 20, 50]
+      default: () => {
+        return [5, 10, 20, 50]
+      }
     },
     pageSize: {
       type: [String, Number],
