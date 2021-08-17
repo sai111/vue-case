@@ -1,7 +1,9 @@
 <template>
   <div class="svgShape-entry">
     svgShape组件
-    <svgShape />
+    <div class="svg-shape-li">
+      <svgShape />
+    </div>
   </div>
 </template>
 <script>
@@ -22,5 +24,12 @@ export default {
 .svgShape-entry {
   width: 100%;
   height: 100%;
+  background: url('~@/assets/img/search-bg.png') center center no-repeat;
+  .svg-shape-li {
+    margin: 56px;
+    width: 400px;
+    height: 415px;
+    overflow: hidden;
+  }
 }
 </style>
