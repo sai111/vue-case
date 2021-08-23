@@ -1,93 +1,74 @@
 <template>
-  <div ref="waterfall" class="scroll-list">
-    <el-scrollbar
-      id="resultScroll"
-      ref="scrollbar"
+  <div ref="carousel" class="carousel-table">
+    <carousel-scroll
+      :data="tableList"
+      :class-option="classOption"
+      class="wrap"
+      :style="formatStyle(tableList)"
     >
-      <div class="demo-list">
-        <div v-for="(item, index) in tableList" :key="'demo-list-li-' + index" class="demo-list-li">
-          {{ item.label }}
-        </div>
-      </div>
-    </el-scrollbar>
+      <el-table :data="tableList" :show-header="showHead">
+        <el-table-column
+          v-for="(item, index) in columns"
+          :key="'table-column-'+index"
+          :prop="item.prop"
+          :type="item.type"
+          :label="item.label"
+          :width="item.width"
+        />
+      </el-table>
+    </carousel-scroll>
   </div>
 </template>
 <script>
+import CarouselScroll from './components/carousel-scroll.vue'
+// https://chenxuan0000.github.io/vue-seamless-scroll/guide/10-array-property-update.html
 export default {
-  name: 'ScrollList',
+  name: 'ScrollTable',
+  components: { CarouselScroll },
   props: {},
   data() {
     return {
-      noData: false, // 控制滚到底部是否去掉请求接口
-      isFirst: true,
-      pageSize: 10,
-      pageNum: 1,
-      ableScroll: true,
-      waterfallDisabled: false,
-      tableList: []
+      showHead: false,
+      tableList: [],
+      columns: [
+        { type: 'index', label: '序号', width: '80', align: 'center' },
+        { prop: 'title', label: '名称' },
+        { prop: 'time', label: '时间' },
+        { prop: 'desc', label: '描述' }
+      ],
+      classOption: {
+        autoPlay: true,
+        step: 0.8,
+        hoverStop: true
+      }
     }
   },
   computed: {},
   watch: {},
   mounted() {
-    var that = this
-    document.getElementById('resultScroll').addEventListener('scroll', that.onscroll.bind(this), true)
-  },
-  beforeDestroy() {
-    document.getElementById('resultScroll').removeEventListener('scroll', that.onscroll.bind(this), true)
+    this.getData()
   },
   methods: {
-    bindScrollEvent() {},
-    onscroll() {
-      // 滚动条高度
-      const sh = this.$refs['scrollbar'].$refs['wrap'].scrollHeight
-      // 滚动条距离顶部的距离
-      const st = this.$refs['scrollbar'].$refs['wrap'].scrollTop
-      // 滚动条外容器的可视高度
-      const ch = this.$refs['scrollbar'].$refs['wrap'].clientHeight
-      if (st + ch >= sh) {
-        this.pageNum += 1
-        this.getData()
+    formatStyle(arr) {
+      let len = 1
+      if (arr && arr.length > 0) {
+        len = arr.length > 5 ? 5 : arr.length
       }
+      return { height: len * 44 + 'px' }
     },
     getData() {
       for (let index = 0; index < 10; index++) {
-        this.tableList.push({ label: '测试-' + index, id: index })
+        this.tableList.push({
+          title: '测试-' + index,
+          id: index,
+          time: Date.now(),
+          desc: '描述内容～～～'
+        })
       }
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-.scroll-list {
-  width: 500px;
-  height: 400px;
-  ::v-deep .el-scrollbar {
-    width: 100%;
-    height: 100%;
-    .el-scrollbar__wrap {
-      width: 100%;
-      height: 100%;
-      .el-scrollbar__view {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-  #resultScroll {
-    width: 100%;
-    height: 100%;
-    //overflow-y: auto;
-    border: 1px solid red;
-  }
-  .demo-list {
-    width: 100%;
-    min-height: 450px;
-    .demo-list-li {
-      width: 100px;
-      height: 60px;
-      border: 1px solid slategrey;
-    }
-  }
-}
+@import './index.scss';
 </style>

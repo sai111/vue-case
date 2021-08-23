@@ -15,6 +15,8 @@
         :cx="cx"
         :cy="cy"
         :r="radius"
+        fill="none"
+        stroke-linecap="round"
         :stroke="color"
         :stroke-width="radius / 5"
         :stroke-dasharray="`${large * radius / 2}, ${large * radius / 2}`"
@@ -48,6 +50,8 @@
         class="eye"
         :cx="cx"
         :cy="cy"
+        fill="none"
+        stroke-linecap="round"
         :stroke="color"
         :r="radius"
         :stroke-width="radius / 5"
@@ -135,18 +139,20 @@ export default {
   width: 100%;
   height: 100%;
   .mouth {
-    fill: none;
-    stroke-linecap: round;
-    // stroke-dasharray: 44, 44;
-    //animation-timing-function: ease-out;
+    //fill: none;
+    //stroke: #00B51D;
+    //stroke-width: 5;
+    //stroke-linecap: round;
+    //stroke-dasharray: 44, 44;
     //transform-origin: center;   /* transform动画时以自身中心作为基点 */
-    //animation: mounthAni 2. 3s ease-out infinite;
+    //animation: mounthAni 2.3s ease-out infinite;
   }
  .eye {
-    fill: none;
-    stroke-linecap: round;
-    //animation-timing-function: ease-in-out;
-    // stroke-dasharray: 0, 66;
+    //fill: none;
+    //stroke: #00B51D;
+    //stroke-width: 5;
+    //stroke-linecap: round;
+    //stroke-dasharray: 0, 66;
     //transform-origin: center;
     //transform: rotate(-45deg);
     //animation: eyeAni 2.3s ease-in-out infinite;
@@ -155,11 +161,11 @@ export default {
 
 @keyframes mounthAni {
   40% {
-    //stroke-dasharray: 44, 22;   /* 间距改为1/4 */
+    stroke-dasharray: 44, 22;   /* 间距改为1/4 */
   }
   80%, 100% {
-    //stroke-dasharray: 44, 44;   /* 间距恢复为1/2 */
-    //transform: rotate(720deg);
+    stroke-dasharray: 44, 44;   /* 间距恢复为1/2 */
+    transform: rotate(720deg);
   }
 }
 

@@ -14,6 +14,7 @@
         :piece-type="pieceType"
         :list="pieceList"
         @pieceSuccess="pieceSuccess"
+        @updateCate="pieceSuccess"
       />
     </div>
     <!-- 弹窗 -->

@@ -1,9 +1,26 @@
 import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
-// import { getToken } from '@/utils/auth'
 
-// create an axios instance
+// 将正在请求的地址存储起来:https://segmentfault.com/a/1190000022034769
+const pending = []
+const CancelToken = axios.CancelToken
+
+/**
+ * config 请求的axios的配置信息
+ * c框架中用于取消的回调，在这也会用来判断当前是请求阶段还是返回阶段
+*/
+const removePending = (config, c) => {
+  const url = config.url
+  const index = pending.findIndex(i => i === `${url}&${config.method}`)
+  // 判断要请求的的地址有没有在pending中
+  if (index > -1) {
+    c ? c('数据请求中……') : pending.splice(index, 1)
+  } else {
+    c && pending.push(`${url}&${config.method}`)
+  }
+}
+
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
@@ -14,7 +31,11 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // do something before request is sent
-
+    console.log(config, 'config--55')
+    // 请求之前判断并添加到pending
+    config.cancelToken = new CancelToken(c => {
+      removePending(config, c)
+    })
     if (store.getters.token) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
@@ -44,7 +65,8 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-
+    // 请求回来后删除pending存储
+    removePending(response.config)
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000) {
       Message({
@@ -93,6 +115,8 @@ service.interceptors.response.use(
         duration: 5 * 1000
       })
     }
+    // 请求回来后删除pending存储
+    error.config && removePending(error.config)
     return Promise.reject(error)
   }
 )

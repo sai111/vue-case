@@ -8,7 +8,7 @@
 import tobase64 from './index.vue'
 export default {
   name: 'Tobase64Entry',
-  components: {tobase64},
+  components: { tobase64 },
   data() {
     return {}
   },

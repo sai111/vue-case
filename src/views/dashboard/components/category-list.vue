@@ -40,7 +40,7 @@ export default {
           url: '/api/category/delete',
           data: { _id: item._id }
         }).then(() => {
-          // this.getList()
+          this.$emit('updateCate')
         })
       }).catch(() => {
         this.$message('已取消删除')
