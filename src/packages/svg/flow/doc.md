@@ -51,3 +51,9 @@ http://bjornharrtell.github.io/jsts/
 
 
 https://github.com/wenyuan/jtopo_topology
+
+
+1. svg 绘制
+https://blog.csdn.net/cungui5726/article/details/108205323
+2. svg 吸附
+https://www.cnblogs.com/doublejun/p/8280604.html

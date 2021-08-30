@@ -24,4 +24,9 @@ https://blockchain-jd.eshanren.com/
 https://github.com/block
 
 
-
+https://github.com/gausszhou/vue-drag-resize-rotate
+# 主要参考
+https://github.com/mauricius/vue-draggable-resizable
+# 次要参考
+https://github.com/gorkys/vue-draggable-resizable-gorkys
+https://github.com/tmrcui/vue-draggable-resizable-rotatable  

@@ -66,3 +66,7 @@ http://alloyteam.github.io/CodeGuide/
 高数
 https://math.haozi.me
 https://github.com/ae6623/Math
+
+微信小程序开发资源汇总
+https://www.runoob.com/w3cnote/wx-xcx-repo.html#user-content-%E7%BB%84%E4%BB%B6
+https://imageslr.github.io/weapp-library/guide/front.html#%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82
