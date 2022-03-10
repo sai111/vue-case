@@ -52,4 +52,5 @@ export function resetRouter() {
   router.matcher = newRouter.matcher // reset router
 }
 
+console.log(router, 'router------>>>')
 export default router

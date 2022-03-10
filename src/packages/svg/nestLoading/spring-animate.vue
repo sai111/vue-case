@@ -48,6 +48,7 @@ export default {
   },
   mounted() {},
   methods: {
+
     /***
      * 绘制圆
      * rx ry x-axis-rotation large-arc-flag sweep-flag X Y，表示绘制一个椭圆圆弧经过(X,Y)点。

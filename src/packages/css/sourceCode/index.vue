@@ -1,17 +1,17 @@
 <template>
   <div class="sourceCode">
     <el-scrollbar class="custom-el-scroll">
-      <highlightjs language="html" autdetect :code="beautifyCode" />
+      <!--<highlightjs language="html" autdetect :code="beautifyCode" />-->
     </el-scrollbar>
   </div>
 </template>
 <script>
 import Vue from 'vue'
-import highlight from 'highlight.js'
+//import highlight from 'highlight.js'
 import beautify from 'js-beautify'
-import 'highlight.js/styles/tomorrow-night.css'
-window.hljs = highlight
-Vue.use(highlight.vuePlugin)
+//import 'highlight.js/styles/tomorrow-night.css'
+//window.hljs = highlight
+//Vue.use(highlight.vuePlugin)
 export default {
   name: 'SourceCode',
   props: {

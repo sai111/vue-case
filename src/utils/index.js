@@ -357,7 +357,7 @@ export function removeClass(ele, cls) {
 }
 
 // 删除空children
-export function deleteLoopArray (data) {
+export function deleteLoopArray(data) {
   if (data && data.length > 0) {
     data.forEach((v, i) => {
       if (v.children && v.children.length > 0) {

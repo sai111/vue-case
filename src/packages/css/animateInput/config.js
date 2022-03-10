@@ -1,0 +1,1 @@
+/** animateInput配置项 */

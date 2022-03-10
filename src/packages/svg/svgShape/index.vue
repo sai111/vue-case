@@ -32,7 +32,7 @@
         <path :d="borderPath" filter="url(#border-shadow)" stroke-width="0" fill="#fff" fill-opacity="1" />
         <path :d="borderPath" stroke="#2fa855" stroke-width="2" stroke-opacity="0.6" fill="url(#background)" />
         <rect x="0" y="0" :width="width" height="18" fill="url(#rect-background)" />
-        <path :d="`M0,0 L${this.width},0`" stroke="#2fa855" stroke-width="6" fill="none" />
+        <path :d="`M0,0 L${width},0`" stroke="#2fa855" stroke-width="6" fill="none" />
       </g>
     </svg>
   </div>
