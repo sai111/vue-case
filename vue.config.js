@@ -21,7 +21,7 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: process.env.NODE_ENV === 'production' ? 'http://116.62.114.170' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? 'http://121.5.130.129' : '/',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
@@ -32,7 +32,7 @@ module.exports = {
     // 设置请求代理
     proxy: {
       '/api': {
-        target: 'http://116.62.114.170:3000',
+        target: 'http://121.5.130.129:3000',
         ws: true, // 是否启用websockets
         changOrigin: true, // 开启代理：在本地会创建一个虚拟服务端，然后发送请求的数据，并同时接收请求的数据，这样服务端和服务端进行数据的交互就不会有跨域问题
         pathRewrite: {
