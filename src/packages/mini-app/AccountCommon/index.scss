@@ -1,0 +1,30 @@
+.account-common {
+  padding: 1rem;
+  .account {
+    text-align: center;
+    font-weight: 500;
+    color: #191B24;
+    font-size: calc(30 / 16 * 1rem);
+    padding: 1rem 0;
+  }
+  .account-common-li {
+    display: flex;
+    justify-content: space-between;
+    line-height: calc(40 / 16 * 1rem);
+    font-weight: 400;
+    color: #191B24;
+    font-size: calc(14 / 16 * 1rem);
+  }
+  .account-common-button {
+    cursor: pointer;
+    margin-top: calc(45 / 16 * 1rem);
+    text-align: center;
+    font-weight: 600;
+    color: #FFFFFF;
+    font-size: calc(17 / 16 * 1rem);
+    height: calc(50 / 16 * 1rem);
+    line-height: calc(50 / 16 * 1rem);
+    border-radius: calc(10 / 16 * 1rem);
+    background: linear-gradient(270deg, #F22C00 0%, #FE824A 100%);
+  }
+}

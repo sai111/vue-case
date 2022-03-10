@@ -43,7 +43,7 @@ export default {
       multiple: true,
       acceptText: '上传文件只能是',
       sizeText: '上传文件大小不能超过',
-      accept: 'png/jpg/jpeg/image/text/word/xls/txt/zip/apk',
+      accept: 'png/jpg/jpeg/image/text/word/xls/txt/zip/apk/pdf',
       maxLimit: 100, // 个数最大100
       singleSize: 100, // 100M
       sumSize: 100 * 1024,

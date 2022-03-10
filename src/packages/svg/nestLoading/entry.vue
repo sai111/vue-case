@@ -1,16 +1,20 @@
 <template>
   <div class="nest-loading-entry">
     nest-loading组件{{ type }}
-    <!--<progress-block :percentage="value" type="circle" />-->
-    <nest-loading :value="value" />
+    <div class="nest-li">
+      <nest-loading :value="value" />
+    </div>
+    <div class="nest-li">
+      <spring-animate />
+    </div>
   </div>
 </template>
 <script>
 import NestLoading from './index.vue'
-// import ProgressBlock from './progress.vue'
+import SpringAnimate from './spring-animate.vue'
 export default {
   name: 'NestLoadingEntry',
-  components: { NestLoading },
+  components: { NestLoading, SpringAnimate },
   data() {
     return {
       type: 'circle',
@@ -45,5 +49,10 @@ export default {
   width: 100%;
   height: 100%;
   background: url('./search-bg.png') center center no-repeat;
+  display: flex;
+  .nest-li {
+    width: 50%;
+    height: 100%;
+  }
 }
 </style>

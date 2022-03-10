@@ -23,6 +23,28 @@ const translateNum = function(num) {
 //let result = Object.create({})
 //arr.forEach((v) => result = { ...result, ...v })
 //console.log(result, 'result')
+
+// 千位符 【这个在小数显示时有问题】
+const toThousandsNumber = function(number) {
+	let numPrefix = ''
+  let numArr = ''
+  let numDist = ''
+  // 处理负数情况
+  if (number < 0) {
+  	numPrefix = '-'
+    numArr = String(number).splice(1).split('').reverse()
+  } else {
+  	numArr = String(number).split('').reverse()
+  }
+  for (let i = 0; i < numArr.length; i++) {
+  	numDist += numArr[i]
+    if ((i + 1) % 3 === 0 && (i + 1) < numArr.length) {
+    	numDist += ','
+    }
+  }
+  return numPrefix + numDist.split('').reverse().join('')
+}
 export default {
-  translateNum
+  translateNum,
+  toThousandsNumber
 }

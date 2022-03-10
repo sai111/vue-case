@@ -78,6 +78,7 @@ export default {
       return !errorType && isLtMax
     },
     upload(rawFile) {
+      console.log(rawFile, 'raw-file------->>>>')
       this.$refs.input.value = null
       const before = this.beforeUpload(rawFile)
       // if (!this.beforeUpload) {

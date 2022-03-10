@@ -66,3 +66,40 @@ export function toThousandFilter(num) {
 export function uppercaseFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
+
+// 转换成千位符
+export function toThousandsNumber (number) {
+  let num = number
+  let numPrefix = '' // 符号:用于小数
+  // 数值小于0
+  if (number < 0) {
+    numPrefix = '-'
+    num = Math.abs(number).toString()
+  } else {
+    num = number
+  }
+  if (num > 1000) {
+    let xiaoshu = '' // 用来记录参数小数数值包括小数点
+    let zhengshu = '' // 用来记录参数录整数数值
+    const t = num.toString() // 将整数转换成字符串
+    if (t.indexOf('.') > 0) {
+      // 如果参数存在小数，则记录小数部分与整数部分
+      const index = t.indexOf('.')
+      xiaoshu = t.slice(index, t.length)
+      zhengshu = t.slice(0, index)
+    } else {
+      zhengshu = t
+    }
+    let numDist = ''
+    const numArr = zhengshu.split('').reverse()
+    for (let i = 0; i < numArr.length; i++) {
+      numDist += numArr[i]
+      if ((i + 1) % 3 === 0 && (i + 1) < numArr.length) {
+        numDist += ','
+      }
+    }
+    return numPrefix + numDist.split('').reverse().join('') + xiaoshu
+  } else {
+    return numPrefix + num
+  }
+}
